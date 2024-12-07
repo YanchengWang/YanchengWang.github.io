@@ -157,3 +157,9 @@ table, th, td {
 th, td {
     border-bottom: 1px solid #ddd; /* This adds a thicker border at the bottom of each cell */
 }
+td.faded-edge {
+  padding: 2%;
+  width: 30%;
+  max-width: 30%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, .1); /* Adjust the spread and color as needed */
+}
