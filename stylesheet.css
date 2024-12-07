@@ -102,8 +102,9 @@ subheading {
 papertitle {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 14px;
-  font-weight: 700
+  font-weight: 700;
 }
+
 
 name {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
@@ -114,6 +115,18 @@ name {
   width: 160px;
   height: 160px;
   position: relative;
+}
+
+.greenpapertitle {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFFFFF; /* White text */
+  background-color: #008000; /* Green background */
+
+}
+.extra-space {
+  margin-top: 10px;  /* Adds 20px of space above the element */
 }
 
 .two {
