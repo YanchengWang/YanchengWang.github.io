@@ -93,7 +93,12 @@ heading {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 22px;
 }
-
+subheading {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 18px;
+  color: #000000;
+  font-weight: 700;
+}
 papertitle {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 16px;
