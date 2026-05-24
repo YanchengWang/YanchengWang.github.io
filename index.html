@@ -1,498 +1,775 @@
-<!DOCTYPE HTML>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Yancheng Wang">
+  <meta name="description" content="Yancheng Wang's academic homepage: research, publications, experience, and service.">
   <title>Yancheng Wang</title>
 
-  <meta name="author" content="Jon Barron">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
   <link rel="icon" type="image/png" href="images/seal_icon.png">
+
+  <style>
+    :root {
+      --bg: #f7f3ff;
+      --bg-soft: #fdfbff;
+      --card: rgba(255, 255, 255, 0.86);
+      --text: #1f1b2e;
+      --muted: #625b71;
+      --accent: #6d3fbf;
+      --accent-dark: #4f2a91;
+      --accent-soft: #eee7ff;
+      --border: rgba(109, 63, 191, 0.16);
+      --shadow: 0 18px 50px rgba(74, 43, 132, 0.12);
+      --radius: 24px;
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      background:
+        radial-gradient(circle at top left, rgba(178, 143, 255, 0.28), transparent 34rem),
+        radial-gradient(circle at top right, rgba(111, 184, 255, 0.18), transparent 32rem),
+        linear-gradient(180deg, var(--bg), #ffffff 46%, #fbf9ff);
+    }
+
+    a {
+      color: var(--accent-dark);
+      text-decoration: none;
+      transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    .page {
+      width: min(var(--max-width), calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(247, 243, 255, 0.76);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      width: min(var(--max-width), calc(100% - 36px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.94rem;
+      padding: 8px 11px;
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-dark);
+      background: rgba(109, 63, 191, 0.08);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(220px, 0.75fr);
+      gap: 34px;
+      align-items: center;
+      padding: 56px 0 34px;
+    }
+
+    .hero-card,
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: clamp(28px, 4vw, 46px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -90px auto;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(109, 63, 191, 0.14), transparent 70%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent-dark);
+      font-size: 0.94rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.5rem, 7vw, 5.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.075em;
+    }
+
+    .subtitle {
+      max-width: 740px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--accent-dark);
+      font-weight: 700;
+      font-size: 0.94rem;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 10px 22px rgba(109, 63, 191, 0.22);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(74, 43, 132, 0.14);
+    }
+
+    .profile-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-card {
+      width: min(100%, 310px);
+      padding: 14px;
+      border-radius: 30px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(238, 231, 255, 0.72));
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 24px 54px rgba(74, 43, 132, 0.18);
+    }
+
+    .profile-card img {
+      display: block;
+      width: 100%;
+      border-radius: 23px;
+      object-fit: cover;
+      aspect-ratio: 4 / 5;
+    }
+
+    .profile-caption {
+      margin: 12px 6px 4px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    main {
+      padding-bottom: 54px;
+    }
+
+    section {
+      scroll-margin-top: 88px;
+      margin-top: 24px;
+    }
+
+    .card {
+      padding: clamp(22px, 3vw, 32px);
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 1.55rem;
+      letter-spacing: -0.035em;
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border), transparent);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      border: 1px solid var(--border);
+      font-size: 0.94rem;
+      font-weight: 650;
+    }
+
+    .experience-list,
+    .service-list {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .experience-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.66);
+      border: 1px solid var(--border);
+    }
+
+    .experience-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .experience-title {
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .experience-year {
+      color: var(--accent-dark);
+      font-weight: 800;
+      font-size: 0.92rem;
+    }
+
+    .experience-item p,
+    .publication p,
+    .service-list p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .year-block {
+      margin-top: 26px;
+    }
+
+    .year-block:first-of-type {
+      margin-top: 8px;
+    }
+
+    .year-heading {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--border);
+      color: var(--accent-dark);
+      font-weight: 850;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+
+    .publication-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .publication {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.66);
+      border: 1px solid var(--border);
+    }
+
+    .venue {
+      justify-self: start;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 100px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 850;
+      letter-spacing: 0.01em;
+      text-align: center;
+      box-shadow: 0 8px 18px rgba(109, 63, 191, 0.18);
+    }
+
+    .paper-title {
+      display: inline;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.35;
+    }
+
+    .paper-title:hover {
+      color: var(--accent-dark);
+    }
+
+    .authors {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .authors strong {
+      color: var(--text);
+    }
+
+    .meta {
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .service-box {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.66);
+      border: 1px solid var(--border);
+    }
+
+    .service-box h3 {
+      margin: 0 0 8px;
+      font-size: 1.02rem;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 24px 0 40px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 820px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 34px;
+      }
+
+      .profile-card {
+        max-width: 260px;
+      }
+
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 13px 0;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .publication {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page,
+      .nav-inner {
+        width: min(100% - 24px, var(--max-width));
+      }
+
+      .hero-card,
+      .card {
+        border-radius: 20px;
+      }
+
+      .quick-links .button {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <table style="width:100%;max-width:900px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:50%;vertical-align:middle">
-              <p style="text-align:Left">
-                <name>Yancheng Wang</name>
-              </p>
-              <p>School of Computing and Augmented Intelligence (SCAI)
-              <p>Arizona State University
-              <p style="text-align:left">
-                <a href="mailto:ywan1053@asu.edu"><strong>Email</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="https://scholar.google.com/citations?user=U5QZhDAAAAAJ"><strong>Google Scholar</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="https://www.linkedin.com/in/yanchengwang/"><strong>Linkedin</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="https://drive.google.com/file/d/1H-IeSAwL8PauwoFOlGpCuQdCBmY0Ytwu/view?usp=drive_link"><strong>Resume</strong></a>
-              </p>
-            </td>
-            <td style="padding:2%;width:30%;max-width:30%">
-              <a href="images/profile.jpg"><img style="width:90%;max-width:90%" alt="profile photo" src="images/profile.jpg" class="hoverZoomLink"></a>
-            </td>
-          </tr>
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Biography</heading>
-              <p>I am a last-year Ph.D. student at School of Computing and Augmented Intelligence, Arizona State University, supervised by Prof. Yingzhen Yang.
-                Before that, I obtained my B.S. in Mathematics and Applied Mathematics (Honors Science Program) from Qian Xuesen Honors College of Xi’an Jiaotong University.
-                </p>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a class="brand" href="#top">Yancheng Wang</a>
+      <div class="nav-links">
+        <a href="#bio">Bio</a>
+        <a href="#research">Research</a>
+        <a href="#experience">Experience</a>
+        <a href="#publications">Publications</a>
+        <a href="#service">Service</a>
+      </div>
+    </div>
+  </nav>
 
-            </td>
-          </tr>
-          <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Research Interests</heading>
-              <p>
-              <ul>
-                <li>LLM Reasoning & Agents</li>
-                <li>LLM Post-Training</li>
-                <li>Multi-Modal Learning (Text, Image, and Audio)</li>
-                <li>Efficient and Robust Deep Learning</li>
-                <li>Model Compression and Acceleration</li>
-                <li>Deep Generative Models</li>
-                <li>Graph Learning</li>
-              </ul>
-              </p>
-            </td>
-          <tr>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Industrail Experience</heading>
-              <p></p>
-              <ul>
-                <li><papertitle>Meta Superintelligence Labs (MSL)</papertitle>, Research Scientist Intern, 2025              <br>
-                  Worked on LLM post-training and multi-modal learning.</li>
+  <div class="page" id="top">
+    <header class="hero">
+      <div class="hero-card">
+        <p class="eyebrow">Ph.D. Candidate · Arizona State University</p>
+        <h2>Yancheng Wang</h2>
+        <p class="subtitle">
+          I work on LLM reasoning and agents, LLM post-training, multimodal learning, efficient and robust deep learning, model compression, generative models, and graph learning.
+        </p>
+        <div class="quick-links" aria-label="Profile links">
+          <a class="button primary" href="mailto:ywan1053@asu.edu">Email</a>
+          <a class="button" href="https://scholar.google.com/citations?user=U5QZhDAAAAAJ">Google Scholar</a>
+          <a class="button" href="https://www.linkedin.com/in/yanchengwang/">LinkedIn</a>
+          <a class="button" href="https://drive.google.com/file/d/1H-IeSAwL8PauwoFOlGpCuQdCBmY0Ytwu/view?usp=drive_link">Resume</a>
+        </div>
+      </div>
 
-                <p></p>
-                <li><papertitle>Amazon AWS AI</papertitle>, Applied Scientist Intern, 2024              <br>
-                  Worked on automatic evaluation of LLM-powered agents in conventional scenarios.</li>
-  
-                <p></p>
-                <li><papertitle>Amazon Alexa AI</papertitle>, Applied Scientist Intern, 2023
-                  <br>
-                  Worked on LLM-powered autonomous agents for general-purpose recommendation. 
-                </li>
-                <p></p>
-                <li><papertitle>KuaiShou U.S. R&D Center</papertitle>, Research Intern, 2021  
-                  <br>
-                  Worked on neural architecture search for image reconstruction.</li>
-              </ul>
+      <div class="profile-wrap">
+        <a class="profile-card" href="images/profile.jpg" aria-label="Open profile photo">
+          <img src="images/profile.jpg" alt="Profile photo of Yancheng Wang" loading="lazy">
+          <p class="profile-caption">School of Computing and Augmented Intelligence, ASU</p>
+        </a>
+      </div>
+    </header>
 
+    <main>
+      <section id="bio" class="card">
+        <div class="section-title"><h2>Biography</h2></div>
+        <p>
+          I am a final-year Ph.D. student in the School of Computing and Augmented Intelligence at Arizona State University, supervised by Prof. Yingzhen Yang. Before that, I received my B.S. in Mathematics and Applied Mathematics from the Honors Science Program at Qian Xuesen Honors College, Xi’an Jiaotong University.
+        </p>
+      </section>
 
-            </td>
-          </tr>
-   
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Publications</heading>
+      <section id="research" class="card">
+        <div class="section-title"><h2>Research Interests</h2></div>
+        <ul class="chips">
+          <li class="chip">LLM Reasoning &amp; Agents</li>
+          <li class="chip">LLM Post-Training</li>
+          <li class="chip">Multimodal Learning</li>
+          <li class="chip">Efficient &amp; Robust Deep Learning</li>
+          <li class="chip">Model Compression</li>
+          <li class="chip">Deep Generative Models</li>
+          <li class="chip">Graph Learning</li>
+        </ul>
+      </section>
 
-              <!-- <br>
-              <strong>Referred Papers</strong> -->
-                          </div>
+      <section id="experience" class="card">
+        <div class="section-title"><h2>Industrial Experience</h2></div>
+        <ul class="experience-list">
+          <li class="experience-item">
+            <div class="experience-top">
+              <span class="experience-title">Meta Superintelligence Labs (MSL) · Research Scientist Intern</span>
+              <span class="experience-year">2025</span>
+            </div>
+            <p>Worked on LLM post-training and multimodal learning.</p>
+          </li>
+          <li class="experience-item">
+            <div class="experience-top">
+              <span class="experience-title">Amazon AWS AI · Applied Scientist Intern</span>
+              <span class="experience-year">2024</span>
+            </div>
+            <p>Worked on automatic evaluation of LLM-powered agents in conventional scenarios.</p>
+          </li>
+          <li class="experience-item">
+            <div class="experience-top">
+              <span class="experience-title">Amazon Alexa AI · Applied Scientist Intern</span>
+              <span class="experience-year">2023</span>
+            </div>
+            <p>Worked on LLM-powered autonomous agents for general-purpose recommendation.</p>
+          </li>
+          <li class="experience-item">
+            <div class="experience-top">
+              <span class="experience-title">KuaiShou U.S. R&amp;D Center · Research Intern</span>
+              <span class="experience-year">2021</span>
+            </div>
+            <p>Worked on neural architecture search for image reconstruction.</p>
+          </li>
+        </ul>
+      </section>
 
-                                        <p class="extra-space"></p>
-                                                      <papertitle>2026</papertitle>
-                                                                <p>
-              <p class="extra-space"></p>
-              <div style="font-family: Arial, sans-serif; font-size: 14px;">
-                  <div style="display: inline-flex; width: 100%; align-items: center; justify-content: center;">
-                      <div style="display: flex; justify-content: center; align-items: center; background-color: #7a4aaa; color: white; padding: 2px 6px; border-radius: 5px; margin-right: 10px; white-space: nowrap; width: 100px;">ICML 2026</div>
-                      <div style="flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                          <a href="https://openreview.net/forum?id=nJljNShSP8">
-                              <papertitle>IBMA: Information Bottleneck-Based Multimodal Alignment</papertitle>
-                          </a>
-                          <br>
-                          <strong>Yancheng Wang</strong>, Zeyu Dong, Dongfang Sun, Alvin C Silva, Teresa Wu, Yingzhen Yang
-                          <br>
-                          <em>International Conference on Machine Learning (ICML),</em> 2026
-                          <br>
-                      </div>
-                  </div>
+      <section id="publications" class="card">
+        <div class="section-title"><h2>Publications</h2></div>
+
+        <div class="year-block">
+          <div class="year-heading">2026</div>
+          <div class="publication-list">
+            <article class="publication">
+              <span class="venue">ICML 2026</span>
+              <div>
+                <a class="paper-title" href="https://openreview.net/forum?id=nJljNShSP8">IBMA: Information Bottleneck-Based Multimodal Alignment</a>
+                <p class="authors"><strong>Yancheng Wang</strong>, Zeyu Dong, Dongfang Sun, Alvin C Silva, Teresa Wu, Yingzhen Yang</p>
+                <p class="meta"><em>International Conference on Machine Learning (ICML)</em>, 2026</p>
               </div>
-              <p class="extra-space"></p>
-              <div style="font-family: Arial, sans-serif; font-size: 14px;">
-                  <div style="display: inline-flex; width: 100%; align-items: center; justify-content: center;">
-                      <div style="display: flex; justify-content: center; align-items: center; background-color: #7a4aaa; color: white; padding: 2px 6px; border-radius: 5px; margin-right: 10px; white-space: nowrap; width: 100px;">ACL 2026</div>
-                      <div style="flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                          <a href="https://arxiv.org/pdf/2508.01191">
-                              <papertitle>Is Chain-of-Thought Reasoning of LLMs a Mirage? A Data Distribution Lens</papertitle>
-                          </a>
-                          <br>
-                          Chengshuai Zhao, Zhen Tan, Pingchuan Ma, Dawei Li, Bohan Jiang, <strong>Yancheng Wang</strong>, Yingzhen Yang, and Huan Liu
-                          <br>
-                                  <em>Findings of the Association for Computational Linguistics: ACL,</em> 2026
-                          <br>
-                      </div>
-                  </div>
-                            <p class="extra-space"></p>
-              <div style="font-family: Arial, sans-serif; font-size: 14px;">
-                  <div style="display: inline-flex; width: 100%; align-items: center; justify-content: center;">
-                      <div style="display: flex; justify-content: center; align-items: center; background-color: #7a4aaa; color: white; padding: 2px 6px; border-radius: 5px; margin-right: 10px; white-space: nowrap; width: 100px;">ICLR 2026</div>
-                      <div style="flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                          <a href="https://openreview.net/forum?id=PMbionN5cC">
-                              <papertitle>VowelPrompt: Hearing Speech Emotions from Text via Vowel-level Prosodic Augmentation</papertitle>
-                          </a>
-                          <br>
-                          <strong>Yancheng Wang</strong>, Osama Hanna, Ruiming Xie, Xianfeng Rui, Maohao Shen, Xuedong Zhang, Christian Fuegen, Jilong Wu, 
-                          <br>
-                          Debjyoti Paul, Arthur Guo, Zhihong Lei, Ozlem Kalinli, Qing He, Yingzhen Yang
-                          <br>
-                          <em>International Conference on Learning Representations (ICLR),</em> 2026
-                          <br>
-                      </div>
-                  </div>
-                   <p class="extra-space"></p>
-                  
-                                <div style="font-family: Arial, sans-serif; font-size: 14px;">
-                  <div style="display: inline-flex; width: 100%; align-items: center; justify-content: center;">
-                      <div style="display: flex; justify-content: center; align-items: center; background-color: #7a4aaa; color: white; padding: 2px 6px; border-radius: 5px; margin-right: 10px; white-space: nowrap; width: 100px;">ICLR 2026</div>
-                      <div style="flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                          <a href="https://openreview.net/forum?id=kXhh2lToaR">
-                              <papertitle>Low-Rank Few-Shot Node Classification by Node-Level Graph Diffusion</papertitle>
-                          </a>
-                          <br>
-                          <strong>Yancheng Wang</strong>,  Chengshuai Zhao, Dongfang Sun, Huan Liu, Yingzhen Yang
-                          <br>
-                          <em>International Conference on Learning Representations (ICLR),</em> 2026
-                          <br>
-                      </div>
-                  </div>
-
-              <p class="extra-space"></p>
-              <papertitle>2025</papertitle>
-
-
-              <p class="extra-space"></p>
-              <div style="font-family: Arial, sans-serif; font-size: 14px;">
-                  <div style="display: inline-flex; width: 100%; align-items: center; justify-content: center;">
-                      <div style="display: flex; justify-content: center; align-items: center; background-color: #7a4aaa; color: white; padding: 2px 6px; border-radius: 5px; margin-right: 10px; white-space: nowrap; width: 100px;">TPAMI</div>
-                      <div style="flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                          <a href="https://ieeexplore.ieee.org/document/11079803">
-                              <papertitle>Efficient Visual Transformer by Learnable Token Merging</papertitle>
-                          </a>
-                          <br>
-                          <strong>Yancheng Wang</strong>, Yingzhen Yang
-                          <br>
-                          <em>Transactions on Pattern Analysis and Machine Intelligence (TPAMI),</em> 2025
-                          <br>
-                      </div>
-                  </div>
-
-            <p>
-              <p class="extra-space"></p>
-              <div style="font-family: Arial, sans-serif; font-size: 14px;">
-                  <div style="display: inline-flex; width: 100%; align-items: center; justify-content: center;">
-                      <div style="display: flex; justify-content: center; align-items: center; background-color: #7a4aaa; color: white; padding: 2px 6px; border-radius: 5px; margin-right: 10px; white-space: nowrap; width: 100px;">UAI 2025</div>
-                      <div style="flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                          <a href="https://openreview.net/forum?id=CtuxW1E82F">
-                              <papertitle>Informative Synthetic Data Selection for Thorax Disease Classification</papertitle>
-                          </a>
-                          <br>
-                          <strong>Yancheng Wang</strong>, Rajeev Goel, Marko Jojic, Alvin C Silva, Teresa Wu, Yingzhen Yang
-                          <br>
-                          <em>Conference on Uncertainty in Artificial Intelligence (UAI),</em> 2025
-                          <br>
-                      </div>
-                  </div>
+            </article>
+            <article class="publication">
+              <span class="venue">ACL 2026</span>
+              <div>
+                <a class="paper-title" href="https://arxiv.org/pdf/2508.01191">Is Chain-of-Thought Reasoning of LLMs a Mirage? A Data Distribution Lens</a>
+                <p class="authors">Chengshuai Zhao, Zhen Tan, Pingchuan Ma, Dawei Li, Bohan Jiang, <strong>Yancheng Wang</strong>, Yingzhen Yang, Huan Liu</p>
+                <p class="meta"><em>Findings of the Association for Computational Linguistics: ACL</em>, 2026</p>
               </div>
+            </article>
+            <article class="publication">
+              <span class="venue">ICLR 2026</span>
+              <div>
+                <a class="paper-title" href="https://openreview.net/forum?id=PMbionN5cC">VowelPrompt: Hearing Speech Emotions from Text via Vowel-level Prosodic Augmentation</a>
+                <p class="authors"><strong>Yancheng Wang</strong>, Osama Hanna, Ruiming Xie, Xianfeng Rui, Maohao Shen, Xuedong Zhang, Christian Fuegen, Jilong Wu, Debjyoti Paul, Arthur Guo, Zhihong Lei, Ozlem Kalinli, Qing He, Yingzhen Yang</p>
+                <p class="meta"><em>International Conference on Learning Representations (ICLR)</em>, 2026</p>
+              </div>
+            </article>
+            <article class="publication">
+              <span class="venue">ICLR 2026</span>
+              <div>
+                <a class="paper-title" href="https://openreview.net/forum?id=kXhh2lToaR">Low-Rank Few-Shot Node Classification by Node-Level Graph Diffusion</a>
+                <p class="authors"><strong>Yancheng Wang</strong>, Chengshuai Zhao, Dongfang Sun, Huan Liu, Yingzhen Yang</p>
+                <p class="meta"><em>International Conference on Learning Representations (ICLR)</em>, 2026</p>
+              </div>
+            </article>
+          </div>
+        </div>
 
-              <p class="extra-space"></p>
-              <div style="font-family: Arial, sans-serif; font-size: 14px;">
-                  <div style="display: inline-flex; width: 100%; align-items: center; justify-content: center;">
-                      <div style="display: flex; justify-content: center; align-items: center; background-color: #7a4aaa; color: white; padding: 2px 6px; border-radius: 5px; margin-right: 10px; white-space: nowrap; width: 100px;">TMLR</div>
-                      <div style="flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                          <a href="https://openreview.net/forum?id=tzW948kU6x">
-                              <papertitle>Diffusion on Graph: Augmentation of Graph Structure for Node Classification</papertitle>
-                          </a>
-                          <br>
-                          <strong>Yancheng Wang</strong>, Changyu Liu, Yingzhen Yang
-                          <br>
-                          <em>Transactions on Machine Learning Research (TMLR),</em> 2025
-                          <br>
-                      </div>
-                  </div>
+        <div class="year-block">
+          <div class="year-heading">2025</div>
+          <div class="publication-list">
+            <article class="publication">
+              <span class="venue">TPAMI</span>
+              <div>
+                <a class="paper-title" href="https://ieeexplore.ieee.org/document/11079803">Efficient Visual Transformer by Learnable Token Merging</a>
+                <p class="authors"><strong>Yancheng Wang</strong>, Yingzhen Yang</p>
+                <p class="meta"><em>Transactions on Pattern Analysis and Machine Intelligence (TPAMI)</em>, 2025</p>
+              </div>
+            </article>
+            <article class="publication">
+              <span class="venue">UAI 2025</span>
+              <div>
+                <a class="paper-title" href="https://openreview.net/forum?id=CtuxW1E82F">Informative Synthetic Data Selection for Thorax Disease Classification</a>
+                <p class="authors"><strong>Yancheng Wang</strong>, Rajeev Goel, Marko Jojic, Alvin C Silva, Teresa Wu, Yingzhen Yang</p>
+                <p class="meta"><em>Conference on Uncertainty in Artificial Intelligence (UAI)</em>, 2025</p>
+              </div>
+            </article>
+            <article class="publication">
+              <span class="venue">TMLR</span>
+              <div>
+                <a class="paper-title" href="https://openreview.net/forum?id=tzW948kU6x">Diffusion on Graph: Augmentation of Graph Structure for Node Classification</a>
+                <p class="authors"><strong>Yancheng Wang</strong>, Changyu Liu, Yingzhen Yang</p>
+                <p class="meta"><em>Transactions on Machine Learning Research (TMLR)</em>, 2025</p>
+              </div>
+            </article>
+            <article class="publication">
+              <span class="venue">Preprint</span>
+              <div>
+                <a class="paper-title" href="https://arxiv.org/pdf/2505.08961.pdf">Differentiable Channel Selection in Self-Attention For Person Re-Identification</a>
+                <p class="authors"><strong>Yancheng Wang</strong>, Nebojsa Jojic, Yingzhen Yang</p>
+                <p class="meta"><em>Under Major Revision for Transactions on Pattern Analysis and Machine Intelligence (TPAMI)</em>, 2025</p>
+              </div>
+            </article>
+            <article class="publication">
+              <span class="venue">DASFAA</span>
+              <div>
+                <a class="paper-title" href="https://arxiv.org/pdf/2401.12393.pdf">Declarative Privacy-Preserving Inference Queries</a>
+                <p class="authors">Hong Guan, Ansh Tiwari, Summer Gautier, Rajan Hari Ambrish, Lixi Zhou, Deepti Gupta, <strong>Yancheng Wang</strong>, Yingzhen Yang, Chaowei Xiao, Kanchan Chowdhury, Jia Zou</p>
+                <p class="meta"><em>International Conference on Database Systems for Advanced Applications (DASFAA) Demo</em>, 2025</p>
+              </div>
+            </article>
+          </div>
+        </div>
 
-                  <p class="extra-space"></p>
-                  <div style="font-family: Arial, sans-serif; font-size: 14px;">
-                      <div style="display: inline-flex; width: 100%; align-items: center; justify-content: center;">
-                          <div style="display: flex; justify-content: center; align-items: center; background-color: #7a4aaa; color: white; padding: 2px 6px; border-radius: 5px; margin-right: 10px; white-space: nowrap; width: 100px;">Preprint</div>
-                          <div style="flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                              <a href="https://arxiv.org/pdf/2505.08961.pdf">
-                                  <papertitle>Differentiable Channel Selection in Self-Attention For Person Re-Identification</papertitle>
-                              </a>
-                              <br>
-                              <strong>Yancheng Wang</strong>, Nebojsa Jojic, Yingzhen Yang
-                              <br>
-                              <em>Under Major Revision for Transactions on Pattern Analysis and Machine Intelligence (TPAMI),</em> 2025
-                              <br>
-                          </div>
-                      </div>
-                  </div>
-                  <p class="extra-space"></p>
-                  <div style="font-family: Arial, sans-serif; font-size: 14px;">
-                      <div style="display: inline-flex; width: 100%; align-items: center; justify-content: center;">
-                          <div style="display: flex; justify-content: center; align-items: center; background-color: #7a4aaa; color: white; padding: 2px 6px; border-radius: 5px; margin-right: 10px; white-space: nowrap; width: 100px;">DASFAA</div>
-                          <div style="flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                              <a href="https://arxiv.org/pdf/2401.12393.pdf">
-                                  <papertitle>Declarative Privacy-Preserving Inference Queries</papertitle>
-                              </a>
-                              <br>
-                              Hong Guan,  Ansh Tiwari, Summer Gautier, Rajan Hari Ambrish, Lixi Zhou, Deepti Gupta, <strong>Yancheng Wang</strong>, 
-                              <br>
-                              Yingzhen Yang, Chaowei Xiao, Kanchan Chowdhury, Jia Zou
-                              <br>
-                              <em>International Conference on Database Systems for Advanced Applications (DASFAA) Demo,</em> 2025
-                              <br>
-                          </div>
-                      </div>
-                  </div>
-                  <p class="extra-space"></p>
-                  <papertitle>2024</papertitle>
-                  <p class="extra-space"></p>
-                  <div style="font-family: Arial, sans-serif; font-size: 14px;">
-                      <div style="display: inline-flex; width: 100%; align-items: center; justify-content: center;">
-                          <div style="display: flex; justify-content: center; align-items: center; background-color: #7a4aaa; color: white; padding: 2px 6px; border-radius: 5px; margin-right: 10px; white-space: nowrap; width: 100px;">NeurIPS 2024</div>
-                          <div style="flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                              <a href="https://openreview.net/pdf?id=GkzrVxs9LS">
-                                  <papertitle>Learning Low-Rank Feature for Thorax Disease Classification</papertitle>
-                              </a>
-                              <br>
-                              <strong>Yancheng Wang</strong>, Rajeev Goel, Utkarsh Nath, Silva Alvin, Teresa Wu, Yingzhen Yang
-                              <br>
-                              <em>Neural Information Processing Systems (NeurIPS),</em> 2024
-                              <br>
-                          </div>
-                      </div>
-                  
-                      <p class="extra-space"></p>
-                      <div style="font-family: Arial, sans-serif; font-size: 14px;">
-                          <div style="display: inline-flex; width: 100%; align-items: center; justify-content: center;">
-                              <div style="display: flex; justify-content: center; align-items: center; background-color: #7a4aaa; color: white; padding: 2px 6px; border-radius: 5px; margin-right: 10px; white-space: nowrap; width: 100px;">ICML 2024</div>
-                              <div style="flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                  <a href="https://openreview.net/pdf?id=iup9NElHji">
-                                      <papertitle>Visual Transformer with Differentiable Channel Selection: An Information Bottleneck Inspired Approach</papertitle>
-                                  </a>
-                                  <br>
-                                  <strong>Yancheng Wang</strong>, Ping Li, Yingzhen Yang
-                                  <br>
-                                  <em>International Conference on Machine Learning (ICML),</em> 2024
-                                  <br>
-                              </div>
-                          </div>
-                      </div>
-                  
-                      <p class="extra-space"></p>
-                      <div style="font-family: Arial, sans-serif; font-size: 14px;">
-                          <div style="display: inline-flex; width: 100%; align-items: center; justify-content: center;">
-                              <div style="display: flex; justify-content: center; align-items: center; background-color: #7a4aaa; color: white; padding: 2px 6px; border-radius: 5px; margin-right: 10px; white-space: nowrap; width: 100px;">NAACL 2024</div>
-                              <div style="flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                  <a href="https://aclanthology.org/2024.findings-naacl.271/">
-                                      <papertitle>RecMind: Large Language Model Powered Agent for Recommendation</papertitle>
-                                  </a>
-                                  <br>
-                                  <strong>Yancheng Wang</strong>, Ziyan Jiang, Zheng Chen, Fan Yang, Yingxue Zhou, Eunah Cho, Xing Fan, Xiaojiang Huang, 
-                                  <br>
-                                  Yanbin Lu, Yingzhen Yang 
-                                  <br>
-                                  <em>Findings of the Association for Computational Linguistics: NAACL,</em> 2024
-                                  <br>
-                              </div>
-                          </div>
-                      </div>
-                      
-                      <p class="extra-space"></p>
-                      <div style="font-family: Arial, sans-serif; font-size: 14px;">
-                          <div style="display: inline-flex; width: 100%; align-items: center; justify-content: center;">
-                              <div style="display: flex; justify-content: center; align-items: center; background-color: #7a4aaa; color: white; padding: 2px 6px; border-radius: 5px; margin-right: 10px; white-space: nowrap; width: 100px;">BigData 2024</div>
-                              <div style="flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                  <a href="https://www.arxiv.org/pdf/2408.01690.pdf">
-                                      <papertitle>IDNet: A Novel Identity Document Dataset via Few-Shot and Quality-Driven Synthetic Data Generation</papertitle>
-                                  </a>
-                                  <br>
-                                  Lulu Xie*, <strong>Yancheng Wang*</strong>, Hong Guan*, Soham Nag, Rajeev Goel, Niranjan Erappa Narayana Swamy, Yingzhen Yang, 
-                                  <br>
-                                  Chaowei Xiao, Jonathan Prisby, Ross Maciejewski, Jia Zou
-                                  <br>
-                                  * Co-First Authors with Equal Contribution
-                                  <br>
-                                  <em>IEEE International Conference on Big Data (IEEE BigData),</em> 2024
-                                  <br>
-                              </div>
-                          </div>
-                      </div>
-                  
-          
-                      <p class="extra-space"></p>
-                      <div style="font-family: Arial, sans-serif; font-size: 14px;">
-                          <div style="display: inline-flex; width: 100%; align-items: center; justify-content: center;">
-                              <div style="display: flex; justify-content: center; align-items: center; background-color: #7a4aaa; color: white; padding: 2px 6px; border-radius: 5px; margin-right: 10px; white-space: nowrap; width: 100px;">UAI 2024</div>
-                              <div style="flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                  <a href="https://openreview.net/forum?id=S0nrdTCNEn">
-                                      <papertitle>Neural Architecture Search Finds Robust Models by Knowledge Distillation</papertitle>
-                                  </a>
-                                  <br>
-                                  Utkarsh Nath, <strong>Yancheng Wang</strong>, Yingzhen Yang
-                                  <br>
-                                  <em>Conference on Uncertainty in Artificial Intelligence (UAI),</em> 2024
-                                  <br>
-                              </div>
-                          </div>
-                      </div>
-                  
-                      <p class="extra-space"></p>
-                      <div style="font-family: Arial, sans-serif; font-size: 14px;">
-                          <div style="display: inline-flex; width: 100%; align-items: center; justify-content: center;">
-                              <div style="display: flex; justify-content: center; align-items: center; background-color: #7a4aaa; color: white; padding: 2px 6px; border-radius: 5px; margin-right: 10px; white-space: nowrap; width: 100px;">IJCV</div>
-                              <div style="flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                  <a href="https://link.springer.com/article/10.1007/s11263-024-02133-4">
-                                      <papertitle>RNAS-CL: Robust Neural Architecture Search by Cross-Layer Knowledge Distillation</papertitle>
-                                  </a>
-                                  <br>
-                                  Utkarsh Nath, <strong>Yancheng Wang</strong>, Yingzhen Yang
-                                  <br>
-                                  <em>International Journal of Computer Vision (IJCV),</em> 2024
-                                  <br>
-                              </div>
-                          </div>
-                      </div>
-                      <p class="extra-space"></p>
+        <div class="year-block">
+          <div class="year-heading">2024</div>
+          <div class="publication-list">
+            <article class="publication">
+              <span class="venue">NeurIPS 2024</span>
+              <div>
+                <a class="paper-title" href="https://openreview.net/pdf?id=GkzrVxs9LS">Learning Low-Rank Feature for Thorax Disease Classification</a>
+                <p class="authors"><strong>Yancheng Wang</strong>, Rajeev Goel, Utkarsh Nath, Silva Alvin, Teresa Wu, Yingzhen Yang</p>
+                <p class="meta"><em>Neural Information Processing Systems (NeurIPS)</em>, 2024</p>
+              </div>
+            </article>
+            <article class="publication">
+              <span class="venue">ICML 2024</span>
+              <div>
+                <a class="paper-title" href="https://openreview.net/pdf?id=iup9NElHji">Visual Transformer with Differentiable Channel Selection: An Information Bottleneck Inspired Approach</a>
+                <p class="authors"><strong>Yancheng Wang</strong>, Ping Li, Yingzhen Yang</p>
+                <p class="meta"><em>International Conference on Machine Learning (ICML)</em>, 2024</p>
+              </div>
+            </article>
+            <article class="publication">
+              <span class="venue">NAACL 2024</span>
+              <div>
+                <a class="paper-title" href="https://aclanthology.org/2024.findings-naacl.271/">RecMind: Large Language Model Powered Agent for Recommendation</a>
+                <p class="authors"><strong>Yancheng Wang</strong>, Ziyan Jiang, Zheng Chen, Fan Yang, Yingxue Zhou, Eunah Cho, Xing Fan, Xiaojiang Huang, Yanbin Lu, Yingzhen Yang</p>
+                <p class="meta"><em>Findings of the Association for Computational Linguistics: NAACL</em>, 2024</p>
+              </div>
+            </article>
+            <article class="publication">
+              <span class="venue">BigData 2024</span>
+              <div>
+                <a class="paper-title" href="https://www.arxiv.org/pdf/2408.01690.pdf">IDNet: A Novel Identity Document Dataset via Few-Shot and Quality-Driven Synthetic Data Generation</a>
+                <p class="authors">Lulu Xie*, <strong>Yancheng Wang*</strong>, Hong Guan*, Soham Nag, Rajeev Goel, Niranjan Erappa Narayana Swamy, Yingzhen Yang, Chaowei Xiao, Jonathan Prisby, Ross Maciejewski, Jia Zou</p>
+                <p class="meta">* Co-first authors with equal contribution. <em>IEEE International Conference on Big Data (IEEE BigData)</em>, 2024</p>
+              </div>
+            </article>
+            <article class="publication">
+              <span class="venue">UAI 2024</span>
+              <div>
+                <a class="paper-title" href="https://openreview.net/forum?id=S0nrdTCNEn">Neural Architecture Search Finds Robust Models by Knowledge Distillation</a>
+                <p class="authors">Utkarsh Nath, <strong>Yancheng Wang</strong>, Yingzhen Yang</p>
+                <p class="meta"><em>Conference on Uncertainty in Artificial Intelligence (UAI)</em>, 2024</p>
+              </div>
+            </article>
+            <article class="publication">
+              <span class="venue">IJCV</span>
+              <div>
+                <a class="paper-title" href="https://link.springer.com/article/10.1007/s11263-024-02133-4">RNAS-CL: Robust Neural Architecture Search by Cross-Layer Knowledge Distillation</a>
+                <p class="authors">Utkarsh Nath, <strong>Yancheng Wang</strong>, Yingzhen Yang</p>
+                <p class="meta"><em>International Journal of Computer Vision (IJCV)</em>, 2024</p>
+              </div>
+            </article>
+            <article class="publication">
+              <span class="venue">NeurIPS WS</span>
+              <div>
+                <span class="paper-title">Differentiable Attention</span>
+                <p class="authors"><strong>Yancheng Wang</strong>, Dongfang Sun, Yingzhen Yang</p>
+                <p class="meta"><em>NeurIPS Workshop on Machine Learning and Compression</em>, 2024</p>
+              </div>
+            </article>
+            <article class="publication">
+              <span class="venue">ICLR WS</span>
+              <div>
+                <a class="paper-title" href="https://arxiv.org/pdf/2402.09600.pdf">Low-Rank Graph Contrastive Learning for Node Classification</a>
+                <p class="authors"><strong>Yancheng Wang</strong>, Yingzhen Yang</p>
+                <p class="meta"><em>ICLR Workshop on Bridging the Gap Between Practice and Theory in Deep Learning</em>, 2024</p>
+              </div>
+            </article>
+          </div>
+        </div>
 
-                      <div style="font-family: Arial, sans-serif; font-size: 14px;">
-                          <div style="display: inline-flex; width: 100%; align-items: center; justify-content: center;">
-                              <div style="display: flex; justify-content: center; align-items: center; background-color: #7a4aaa; color: white; padding: 2px 6px; border-radius: 5px; margin-right: 10px; white-space: nowrap; width: 100px;">NIPS Workshop</div>
-                              <div style="flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                  <a>
-                                      <papertitle>Differentiable Attention</papertitle>
-                                  </a>
-                                  <br>
-                                  <strong>Yancheng Wang</strong>, Dongfang Sun, Yingzhen Yang
-                                  <br>
-                                  <em>NeurIPS Workshop on Machine Learning and Compression,</em> 2024
-                                  <br>
-                              </div>
-                          </div>
-                      </div>
-                  
+        <div class="year-block">
+          <div class="year-heading">2023</div>
+          <div class="publication-list">
+            <article class="publication">
+              <span class="venue">AAAI 2023</span>
+              <div>
+                <a class="paper-title" href="https://dl.acm.org/doi/abs/10.1609/aaai.v37i6.25898">Eliciting Structural and Semantic Global Knowledge in Unsupervised Graph Contrastive Learning</a>
+                <p class="authors">Kaize Ding*, <strong>Yancheng Wang*</strong>, Yingzhen Yang, Huan Liu</p>
+                <p class="meta">* Co-first authors with equal contribution. <em>Proc. of AAAI Conference on Artificial Intelligence (AAAI)</em>, 2023</p>
+              </div>
+            </article>
+            <article class="publication">
+              <span class="venue">Preprint</span>
+              <div>
+                <a class="paper-title" href="https://arxiv.org/pdf/2203.03619.pdf">Adaptive Cross-Layer Attention for Image Restoration</a>
+                <p class="authors"><strong>Yancheng Wang</strong>, Ning Xu, Yingzhen Yang</p>
+                <p class="meta"><em>In Submission</em>, 2023</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
 
-                      <p class="extra-space"></p>
-                      <div style="font-family: Arial, sans-serif; font-size: 14px;">
-                          <div style="display: inline-flex; width: 100%; align-items: center; justify-content: center;">
-                              <div style="display: flex; justify-content: center; align-items: center; background-color: #7a4aaa; color: white; padding: 2px 6px; border-radius: 5px; margin-right: 10px; white-space: nowrap; width: 100px;">ICLR Workshop</div>
-                              <div style="flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                  <a href="https://arxiv.org/pdf/2402.09600.pdf">
-                                      <papertitle>Low-Rank Graph Contrastive Learning for Node Classification</papertitle>
-                                  </a>
-                                  <br>
-                                  <strong>Yancheng Wang</strong>, Yingzhen Yang
-                                  <br>
-                                  <em>ICLR Workshop on Bridging the Gap Between Practice and Theory in Deep Learning,</em> 2024
-                                  <br>
-                              </div>
-                          </div>
-                      </div>
-                      <p class="extra-space"></p>
+      <section id="service" class="card">
+        <div class="section-title"><h2>Service</h2></div>
+        <div class="service-grid">
+          <div class="service-box">
+            <h3>Conference Reviewer</h3>
+            <p><em>NeurIPS</em> 2024, <em>ICLR</em> 2025</p>
+            <p><em>NeurIPS</em> 2023, <em>CIKM</em> 2023</p>
+            <p><em>NeurIPS</em> 2022, <em>SIGKDD</em> 2022, <em>AAAI</em> 2022, <em>ICML</em> 2022, <em>IJCAI</em> 2022</p>
+          </div>
+          <div class="service-box">
+            <h3>Journal Reviewer</h3>
+            <p><em>IJCV</em></p>
+          </div>
+        </div>
+      </section>
+    </main>
 
-                      <papertitle>2023</papertitle>
-
-                      <p class="extra-space"></p>
-                      <div style="font-family: Arial, sans-serif; font-size: 14px;">
-                          <div style="display: inline-flex; width: 100%; align-items: center; justify-content: center;">
-                              <div style="display: flex; justify-content: center; align-items: center; background-color: #7a4aaa; color: white; padding: 2px 6px; border-radius: 5px; margin-right: 10px; white-space: nowrap; width: 100px;">AAAI 2023</div>
-                              <div style="flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                  <a href="https://dl.acm.org/doi/abs/10.1609/aaai.v37i6.25898">
-                                      <papertitle>Eliciting Structural and Semantic Global Knowledge in Unsupervised Graph Contrastive Learning</papertitle>
-                                  </a>
-                                  <br>
-                                  Kaize Ding*, <strong>Yancheng Wang*</strong>, Yingzhen Yang, Huan Liu
-                                  <br>
-                                  * Co-First Authors with Equal Contribution
-                                  <br>
-                                  <em>Proc. of AAAI Conference on Artificial Intelligence (AAAI),</em> 2023
-                                  <br>
-                              </div>
-                          </div>
-                      </div>
-
-
-
-                      <p class="extra-space"></p>
-                      <div style="font-family: Arial, sans-serif; font-size: 14px;">
-                          <div style="display: inline-flex; width: 100%; align-items: center; justify-content: center;">
-                              <div style="display: flex; justify-content: center; align-items: center; background-color: #7a4aaa; color: white; padding: 2px 6px; border-radius: 5px; margin-right: 10px; white-space: nowrap; width: 100px;">Preprint</div>
-                              <div style="flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                  <a href="https://arxiv.org/pdf/2203.03619.pdf">
-                                      <papertitle>Adaptive Cross-Layer Attention for Image Restoration</papertitle>
-                                  </a>
-                                  <br>
-                                  <strong>Yancheng Wang</strong>, Ning Xu, Yingzhen Yang
-                                  <br>
-                                  <em>In Submission,</em> 2023
-                                  <br>
-                              </div>
-                          </div>
-                      </div>
-
-
-
-              </ul>
-                                   
-
-
-            </td>
-          
-          </tr>
-
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-              <tr>
-              <td style="padding:20px;width:100%;vertical-align:middle">
-                <heading>Services</heading>
-                <p>
-                  Conference Reviewer
-                  <ul>
-                    <li> <em>NeurIPS</em> 2024, <em>ICLR</em> 2025
-                    <li> <em>NeurIPS</em> 2023, <em>CIKM</em> 2023, <em>CIKM</em> 2023
-                    <li> <em>NeurIPS</em> 2022, <em>SIGKDD</em> 2022, <em>AAAI</em> 2022, <em>ICML</em> 2022, <em>IJCAI</em> 2022
-                  </ul>
-                </p>
-                <p>
-                  Journal Reviewer
-                  <ul>
-                    <li> <em>IJCV</em> 
-                  </ul>
-                </p>
-
-                <!-- <p>
-                  Teaching Assistant of
-                  <ul>
-                    <li> CSE 205 Object-oriented Program and Data
-                    <li> CSE 475 Foundations of Machine Learning
-                    <li> CSE 575 Statistical Machine Learning
-                    <li> CSE 598 Statistical Learning Theory
-                  </ul>
-                </p> -->
-
-              </td>
-            </tr>
-          </tbody></table>
-
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr>
-            <td style="padding:0px">
-              <br>
-              <p style="text-align:right;font-size:small;">
-                  Last update: February 2026 &nbsp&nbsp&nbsp&nbsp <a href="https://github.com/jonbarron/website">Template</a>
-              </p>
-            </td>
-          </tr>
-        </tbody></table>
-
+    <footer class="footer">
+      <span>Last update: May 2026</span>
+      <span>Inspired by <a href="https://github.com/jonbarron/website">Jon Barron's academic website template</a>.</span>
+    </footer>
+  </div>
 </body>
-
 </html>
