@@ -11,16 +11,16 @@
 
   <style>
     :root {
-      --bg: #f7f3ff;
-      --bg-soft: #fdfbff;
-      --card: rgba(255, 255, 255, 0.86);
-      --text: #1f1b2e;
-      --muted: #625b71;
-      --accent: #6d3fbf;
-      --accent-dark: #4f2a91;
-      --accent-soft: #eee7ff;
-      --border: rgba(109, 63, 191, 0.16);
-      --shadow: 0 18px 50px rgba(74, 43, 132, 0.12);
+      --bg: #f3f4f6;
+      --bg-soft: #fafafa;
+      --card: rgba(255, 255, 255, 0.9);
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --accent: #0071e3;
+      --accent-dark: #005bb5;
+      --accent-soft: #e8f1fb;
+      --border: rgba(29, 29, 31, 0.12);
+      --shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
       --radius: 24px;
       --max-width: 1080px;
     }
@@ -39,9 +39,9 @@
       color: var(--text);
       line-height: 1.65;
       background:
-        radial-gradient(circle at top left, rgba(178, 143, 255, 0.28), transparent 34rem),
-        radial-gradient(circle at top right, rgba(111, 184, 255, 0.18), transparent 32rem),
-        linear-gradient(180deg, var(--bg), #ffffff 46%, #fbf9ff);
+        radial-gradient(circle at top left, rgba(222, 227, 234, 0.55), transparent 34rem),
+        radial-gradient(circle at top right, rgba(192, 217, 242, 0.26), transparent 32rem),
+        linear-gradient(180deg, var(--bg), #ffffff 46%, #f8f9fb);
     }
 
     a {
@@ -64,7 +64,7 @@
       top: 0;
       z-index: 10;
       backdrop-filter: blur(18px);
-      background: rgba(247, 243, 255, 0.76);
+      background: rgba(236, 238, 241, 0.86);
       border-bottom: 1px solid var(--border);
     }
 
@@ -101,7 +101,7 @@
 
     .nav-links a:hover {
       color: var(--accent-dark);
-      background: rgba(109, 63, 191, 0.08);
+      background: rgba(0, 113, 227, 0.08);
     }
 
     .hero {
@@ -132,7 +132,7 @@
       inset: auto -80px -90px auto;
       width: 250px;
       height: 250px;
-      background: radial-gradient(circle, rgba(109, 63, 191, 0.14), transparent 70%);
+      background: radial-gradient(circle, rgba(0, 113, 227, 0.14), transparent 70%);
       pointer-events: none;
     }
 
@@ -143,6 +143,15 @@
       font-weight: 700;
       letter-spacing: 0.02em;
       text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .eyebrow-icon {
+      width: 16px;
+      height: 16px;
+      flex: 0 0 auto;
     }
 
     h1 {
@@ -185,12 +194,12 @@
       background: var(--accent);
       color: #fff;
       border-color: transparent;
-      box-shadow: 0 10px 22px rgba(109, 63, 191, 0.22);
+      box-shadow: 0 10px 22px rgba(0, 113, 227, 0.22);
     }
 
     .button:hover {
       transform: translateY(-1px);
-      box-shadow: 0 12px 26px rgba(74, 43, 132, 0.14);
+      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.12);
     }
 
     .profile-wrap {
@@ -202,9 +211,9 @@
       width: min(100%, 310px);
       padding: 14px;
       border-radius: 30px;
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(238, 231, 255, 0.72));
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(241, 244, 248, 0.82));
       border: 1px solid rgba(255, 255, 255, 0.85);
-      box-shadow: 0 24px 54px rgba(74, 43, 132, 0.18);
+      box-shadow: 0 24px 54px rgba(15, 23, 42, 0.14);
     }
 
     .profile-card img {
@@ -301,9 +310,19 @@
     }
 
     .experience-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       font-weight: 800;
       font-size: 1.02rem;
       color: var(--text);
+    }
+
+    .company-icon {
+      width: 16px;
+      height: 16px;
+      flex: 0 0 auto;
+      object-fit: contain;
     }
 
     .experience-year {
@@ -371,7 +390,7 @@
       font-weight: 850;
       letter-spacing: 0.01em;
       text-align: center;
-      box-shadow: 0 8px 18px rgba(109, 63, 191, 0.18);
+      box-shadow: 0 8px 18px rgba(0, 113, 227, 0.2);
     }
 
     .paper-title {
@@ -393,7 +412,7 @@
     }
 
     .authors strong {
-      color: var(--text);
+      color: var(--accent-dark);
     }
 
     .meta {
@@ -406,6 +425,46 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 16px;
+    }
+
+    .news-window {
+      height: 220px;
+      overflow-y: scroll;
+      padding-right: 6px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(130, 140, 155, 0.8) rgba(210, 216, 224, 0.75);
+    }
+
+    .news-window::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .news-window::-webkit-scrollbar-track {
+      background: rgba(210, 216, 224, 0.75);
+      border-radius: 999px;
+    }
+
+    .news-window::-webkit-scrollbar-thumb {
+      background: rgba(130, 140, 155, 0.8);
+      border-radius: 999px;
+    }
+
+    .news-list {
+      margin: 0;
+      padding-left: 20px;
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+    }
+
+    .news-list li {
+      padding-right: 6px;
+    }
+
+    .news-date {
+      color: var(--accent-dark);
+      font-weight: 800;
+      margin-right: 8px;
     }
 
     .service-box {
@@ -483,6 +542,7 @@
     <div class="nav-inner">
       <a class="brand" href="#top">Yancheng Wang</a>
       <div class="nav-links">
+        <a href="#news">News</a>
         <a href="#bio">Bio</a>
         <a href="#research">Research</a>
         <a href="#experience">Experience</a>
@@ -495,7 +555,7 @@
   <div class="page" id="top">
     <header class="hero">
       <div class="hero-card">
-        <p class="eyebrow">Ph.D. in Computer Science · Arizona State University</p>
+        <p class="eyebrow"><img class="eyebrow-icon" src="images/apple.svg" alt="" aria-hidden="true">Machine Learning Researcher at Apple</p>
         <h2>Yancheng Wang</h2>
         <p class="subtitle">
           I work on LLM reasoning and agents, LLM post-training, multimodal learning, efficient and robust deep learning, model compression, generative models, and graph learning.
@@ -517,10 +577,25 @@
     </header>
 
     <main>
+      <section id="news" class="card">
+        <div class="section-title"><h2>News</h2></div>
+        <div class="news-window" aria-label="Recent news and updates">
+          <ul class="news-list">
+            <li><span class="news-date">[2026/6]</span>2 papers accepted to UAI 2026.</li>
+            <li><span class="news-date">[2026/5]</span>Awarded Gold Reviewer  at ICML 2026.</li>
+            <li><span class="news-date">[2026/5]</span>Started as a Machine Learning Researcher at Apple.</li>
+            <li><span class="news-date">[2026/5]</span>1 paper accepted to ICML 2026.</li>
+            <li><span class="news-date">[2026/4]</span>1 paper accepted to ACL 2026.</li>
+            <li><span class="news-date">[2026/2]</span>2 papers accepted to ICLR 2026.</li>
+          </ul>
+        </div>
+      </section>
+
       <section id="bio" class="card">
         <div class="section-title"><h2>Biography</h2></div>
         <p>
-Yancheng Wang recently completed his Ph.D. in Computer Science at Arizona State University, advised by Prof. Yingzhen Yang. His research focuses on LLM reasoning and agents, LLM post-training, multimodal learning, efficient and robust deep learning, and generative models. He has research experience at Meta Superintelligence Labs, Amazon AWS AI, Amazon Alexa AI, and Kuaishou U.S. R&D Center. His work has been published in leading venues including ICML, ICLR, NeurIPS, ACL, TPAMI, IJCV, UAI, NAACL, and AAAI.        </p>
+Yancheng Wang is a Machine Learning Researcher at Apple, where he works on multimodal LLMs and reasoning agents. He recently completed his Ph.D. in Computer Science at Arizona State University, advised by Prof. Yingzhen Yang. His research focuses on LLM reasoning and agents, LLM post-training, multimodal learning, efficient and robust deep learning, and generative models. He has research experience at Meta Superintelligence Labs, Amazon AWS AI, Amazon Alexa AI, and Kuaishou U.S. R&amp;D Center. His work has been published in leading venues including ICML, ICLR, NeurIPS, ACL, TPAMI, IJCV, UAI, NAACL, and AAAI.
+        </p>
       </section>
 
       <section id="research" class="card">
@@ -542,35 +617,35 @@ Yancheng Wang recently completed his Ph.D. in Computer Science at Arizona State 
         <ul class="experience-list">
           <li class="experience-item">
             <div class="experience-top">
-              <span class="experience-title">Apple · Machine Learning Research Engineer</span>
+              <span class="experience-title"><img class="company-icon" src="images/company-apple.svg" alt="Apple logo">Apple · Machine Learning Researcher</span>
               <span class="experience-year">2026 May - Now</span>
             </div>
             <p>Working on reasoning and post-training of multimodal LLMs.</p>
           </li>          
           <li class="experience-item">
             <div class="experience-top">
-              <span class="experience-title">Meta Superintelligence Labs (MSL) · Research Scientist Intern</span>
+              <span class="experience-title"><img class="company-icon" src="images/company-meta.svg" alt="Meta logo">Meta Superintelligence Labs (MSL) · Research Scientist Intern</span>
               <span class="experience-year">2025 May - 2025 Aug</span>
             </div>
             <p>Worked on LLM post-training and multimodal learning.</p>
           </li>
           <li class="experience-item">
             <div class="experience-top">
-              <span class="experience-title">Amazon AWS AI · Applied Scientist Intern</span>
+              <span class="experience-title"><img class="company-icon" src="images/company-amazon.svg" alt="Amazon logo">Amazon AWS AI · Applied Scientist Intern</span>
               <span class="experience-year">2024 May - 2024 Aug</span>
             </div>
             <p>Worked on automatic evaluation of LLM-powered agents in conventional scenarios.</p>
           </li>
           <li class="experience-item">
             <div class="experience-top">
-              <span class="experience-title">Amazon Alexa AI · Applied Scientist Intern</span>
+              <span class="experience-title"><img class="company-icon" src="images/company-amazonalexa.svg" alt="Alexa logo">Amazon Alexa AI · Applied Scientist Intern</span>
               <span class="experience-year">2023 May - 2023 Aug</span>
             </div>
             <p>Worked on LLM-powered autonomous agents for general-purpose recommendation.</p>
           </li>
           <li class="experience-item">
             <div class="experience-top">
-              <span class="experience-title">KuaiShou U.S. R&amp;D Center · Research Intern</span>
+              <span class="experience-title"><img class="company-icon" src="images/company-kuaishou.svg" alt="Kuaishou logo">KuaiShou U.S. R&amp;D Center · Research Intern</span>
               <span class="experience-year">2021 May - 2021 Aug</span>
             </div>
             <p>Worked on neural architecture search for image reconstruction.</p>
